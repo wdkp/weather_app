@@ -24,11 +24,33 @@ class _WeatherStatePage extends State<WeatherPage> {
         _weather = weather;
       });
     }
+
+    catch(e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _fetchWeather();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(_weather?.cityName ?? "loading city"),
+            Text('${_weather?.temperature.round()}C' )
+          ],
+        ),
+      ),
+    );
   }
 }
 
